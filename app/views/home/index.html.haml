@@ -1,0 +1,8 @@
+.row
+  .small-3.columns
+    %ul.side-nav
+      %li= link_to 'Sign out', destroy_user_session_path, :method => :delete
+    %p
+      %img(src="#{image_url 'http://placehold.it/320x240&amp;text=Ad'}")
+  .small-9.columns
+    notifs

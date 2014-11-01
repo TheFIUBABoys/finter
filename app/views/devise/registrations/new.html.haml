@@ -1,0 +1,29 @@
+.row
+  .small-6.small-centered.columns
+    %h4 Sign up
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      .row
+        .columns= devise_error_messages!
+        .columns.field
+          %label
+            = f.label :username
+            = f.text_field :username, autofocus: true
+        .columns.field
+          %label
+            = f.label :email
+            = f.email_field :email
+        .columns.field
+          %label
+            = f.label :password
+            - if @validatable
+              %em
+                (#{@minimum_password_length} characters minimum)
+            = f.password_field :password, autocomplete: 'off'
+        .columns.field
+          %label
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, autocomplete: 'off'
+        .columns
+          %button.tiny(type="submit") Sign Up
+
+  .small-6.small-centered.columns= render 'devise/shared/links'

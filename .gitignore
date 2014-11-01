@@ -1,0 +1,6 @@
+config/database.yml
+config/redis-cache.yml
+config/redis-jobs.yml
+log/
+tmp/
+node_modules/
