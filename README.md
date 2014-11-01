@@ -14,6 +14,7 @@
 ## Run migrations
 
 ```bundle exec rake db:create``` (First time only)
+
 ```bundle exec rake db:migrate```
 
 ## Bootstrap database
