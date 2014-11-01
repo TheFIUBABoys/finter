@@ -1,10 +1,17 @@
 namespace :bootstrap do
-  puts 'Creating first topic'
+  puts 'Creating first topics'
   task first_topic: :environment do
     Topic.create(
         name: 'deportes',
         promoted: false,
-        twitter_keywords: 'deportes futbol rugby automovilismo ajedrez'
+        twitter_keywords: 'deportes futbol rugby automovilismo ajedrez',
+        description: 'Informacion de deportes'
+    )
+    Topic.create(
+        name: 'transito',
+        promoted: false,
+        twitter_keywords: 'ernestoarriaga transito cortado autopista colectivo tren subte',
+        description: 'Informacion del estado de transito'
     )
   end
   puts 'Creating first notification and associating it with topic'

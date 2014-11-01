@@ -24,4 +24,5 @@ gem 'uglifier'
 ## Finter
 gem 'haml-rails'
 gem 'foundation-rails'
+gem 'font-awesome-rails'
 gem 'devise'
