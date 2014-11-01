@@ -34,13 +34,13 @@ or
 Then you can interact with the models of the app. For example:
 
 ```ruby
-    first_topic = Topic.first
-    topic_notification = first_topic.notifications.first
-    notification_body = topic_notification.body
+first_topic = Topic.first
+topic_notification = first_topic.notifications.first
+notification_body = topic_notification.body
 
-    first_notification = Notification.first
-    notification_topic = first_notification.topic
-    topic_name = notification_topic.name
+first_notification = Notification.first
+notification_topic = first_notification.topic
+topic_name = notification_topic.name
 ```
 
 ## General rails doc
