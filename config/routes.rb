@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'topics/follow/:id', to: 'topics#follow', as: 'follow_topic'
 
-  resources :topics, only: [:index]
+  resources :topics, only: [:index, :show]
   resources :notifications, only: [:show, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.

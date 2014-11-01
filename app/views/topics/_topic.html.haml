@@ -1,0 +1,8 @@
+.panel
+  %h5
+    = topic.name.capitalize
+    - unless user_follows
+      %i.fa.fa-plus.right
+        = link_to 'Follow', follow_topic_path(id: topic.id)
+  %blockquote= topic.description
+  = link_to 'Notifications', topic_path(id: topic.id)

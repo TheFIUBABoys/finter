@@ -1,18 +1,15 @@
 .row
-  .small-6.small-centered.columns
-    %h4 Topics you follow
-    - @user_topics.each do |topic|
-      .panel= topic.name
+  .small-3.columns= render 'shared/sidebar'
+  .small-9.columns
+    .row
+      .columns
+        %h4 Topics you follow
+        - @user_topics.each do |topic|
+          = render 'topic', topic: topic, user_follows: true
 
-  %hr
+      %hr
 
-  .small-6.small-centered.columns
-    %h4 Suggested topics
-    - @suggested_topics.each do |topic|
-      .panel
-        %h5
-          = topic.name
-          %i.fa.fa-plus.right
-            = link_to 'Follow', follow_topic_path(id: topic.id)
-        %p= topic.description
-
+      .columns
+        %h4 Suggested topics
+        - @suggested_topics.each do |topic|
+          = render 'topic', topic: topic, user_follows: false
