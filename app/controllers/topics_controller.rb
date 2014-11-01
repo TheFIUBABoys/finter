@@ -10,8 +10,18 @@ class TopicsController < ApplicationController
   end
 
   def follow
-    topic = Topic.find(params.fetch(:id))
-    current_user.topics << topic
+    current_user.topics << topic_param
     redirect_to topics_path
+  end
+
+  def unfollow
+    current_user.topics.delete(topic_param)
+    redirect_to topics_path
+  end
+
+  private
+
+  def topic_param
+    Topic.find(params.fetch(:id))
   end
 end

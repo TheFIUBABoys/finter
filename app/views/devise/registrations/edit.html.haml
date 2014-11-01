@@ -1,7 +1,8 @@
 .row
-  .small-6.small-centered.columns
-    %h4 Edit #{resource_name.to_s.humanize}
+  .small-3.columns= render 'shared/sidebar'
+  .small-9.columns
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      %h4 Edit #{resource_name.to_s.humanize}
       .row
         .columns= devise_error_messages!
         .columns.field
@@ -29,11 +30,11 @@
         .columns
           %button.tiny(type="submit") Update
 
-%hr
+    %hr
 
-.row
-  .small-6.small-centered.columns
-    %h5 Unhappy?
-    = link_to 'Cancel my account', registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete, class: 'button alert tiny'
+    .row
+      .columns
+        %h5 Unhappy?
+        = link_to 'Cancel my account', registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete, class: 'button alert tiny'
 
 

@@ -4,5 +4,8 @@
     - unless user_follows
       %i.fa.fa-plus.right
         = link_to 'Follow', follow_topic_path(id: topic.id)
+    - else
+      %i.fa.fa-minus.right
+        = link_to 'Unfollow', unfollow_topic_path(id: topic.id)
   %blockquote= topic.description
   = link_to 'Notifications', topic_path(id: topic.id)
