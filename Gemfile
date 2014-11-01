@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ## Core rails
 gem 'rails', '4.1.6'
-gem 'sqlite3'
+gem 'mysql2'
 gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
