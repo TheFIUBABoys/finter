@@ -1,5 +1,4 @@
 class Notification < ActiveRecord::Base
-  belongs_to :topic
-
-  validates_presence_of :topic
+  has_many :topic_notifications
+  has_many :topics, through: :topic_notifications
 end

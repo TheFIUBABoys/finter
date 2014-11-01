@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101171532) do
+ActiveRecord::Schema.define(version: 20141101180614) do
 
   create_table "notifications", force: true do |t|
     t.string   "body"
@@ -20,15 +20,26 @@ ActiveRecord::Schema.define(version: 20141101171532) do
     t.string   "twitter_handle"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "topic_id"
   end
 
-  add_index "notifications", ["topic_id"], name: "index_notifications_on_topic_id", using: :btree
+  create_table "topic_notifications", force: true do |t|
+    t.integer  "notification_id"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "topics", force: true do |t|
     t.string   "name"
     t.boolean  "promoted"
     t.string   "twitter_keywords"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_topics", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "topic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
