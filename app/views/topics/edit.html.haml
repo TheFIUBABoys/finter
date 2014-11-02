@@ -1,0 +1,21 @@
+= form_for(@topic, as: :topics, url: topic_path(@topic), html: { method: :put }) do |f|
+  %h4 Edit #{@topic.name}
+  .row
+    .columns.field
+      %label
+        = f.label :name
+        = f.text_field :name, autofocus: true
+    .columns.field
+      %label
+        = f.label :description
+        = f.text_field :description
+    .columns.field
+      %label
+        = f.label :twitter_keywords
+        = f.text_area :twitter_keywords
+    .columns.field
+      %label
+        = f.check_box :promoted
+        = f.label :promoted
+    .columns
+      %button.tiny(type="submit") Create

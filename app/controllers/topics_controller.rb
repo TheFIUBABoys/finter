@@ -20,6 +20,15 @@ class TopicsController < ApplicationController
     redirect_to topics_path
   end
 
+  def update
+    Topic.find(params.fetch(:id)).update(topic_params)
+    redirect_to topics_path
+  end
+
+  def edit
+    @topic = Topic.find(params.fetch(:id))
+  end
+
   def follow
     current_user.topics << topic_from_params
     redirect_to topics_path

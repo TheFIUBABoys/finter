@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get 'topics/follow/:id', to: 'topics#follow', as: 'follow_topic'
   get 'topics/unfollow/:id', to: 'topics#unfollow', as: 'unfollow_topic'
 
-  resources :topics, only: [:index, :show, :new, :create]
+  resources :topics, only: [:index, :show, :new, :create, :edit, :update]
   resources :notifications, only: [:show, :create, :destroy]
 end
