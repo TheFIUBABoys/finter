@@ -21,10 +21,14 @@
       %label
         = f.label :password_confirmation
         = f.password_field :password_confirmation, autocomplete: 'off'
-    .columns.field
+    .small-4.columns.field
       %label
         = f.check_box :admin
         = f.label :admin
+    .small-4.columns.field
+      %label
+        = f.check_box :pro
+        = f.label :pro
     .columns
       %button.tiny(type="submit") Sign Up
 

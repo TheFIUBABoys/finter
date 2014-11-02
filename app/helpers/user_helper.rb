@@ -10,4 +10,8 @@ module UserHelper
   def user_topics
     current_user.topics
   end
+
+  def user_can_follow?
+    current_user.can_follow_topic?
+  end
 end

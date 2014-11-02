@@ -6,10 +6,10 @@
     - if is_admin?
       = link_to edit_topic_path(id: topic.id) do
         %i.fa.fa-edit.right
-    - unless user_follows
-      = link_to follow_topic_path(id: topic.id) do
-        %i.fa.fa-plus.right
-    - else
+    - if user_follows
       = link_to unfollow_topic_path(id: topic.id) do
         %i.fa.fa-close.right
+    - elsif user_can_follow?
+      = link_to follow_topic_path(id: topic.id) do
+        %i.fa.fa-plus.right
   %p= topic.description

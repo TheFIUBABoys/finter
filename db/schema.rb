@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102202627) do
+ActiveRecord::Schema.define(version: 20141102211351) do
 
   create_table "notifications", force: true do |t|
     t.string   "body"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20141102202627) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "admin"
+    t.boolean  "pro"
   end
 
 end

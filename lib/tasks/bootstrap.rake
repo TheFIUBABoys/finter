@@ -5,7 +5,8 @@ namespace :bootstrap do
       username: 'admin',
       password: 'admin1234',
       email:    'admin@admin.com',
-      admin:    true
+      admin:    true,
+      pro:      false
     )
   end
   desc 'Creating first topics'

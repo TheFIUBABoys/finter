@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :username
   validates_uniqueness_of :username, case_sensitive: false
+
+  def can_follow_topic?
+    pro || topics.count < 4
+  end
 end

@@ -24,10 +24,14 @@
         = f.label :current_password
         %i (we need your current password to confirm your changes)
         = f.password_field :current_password, autocomplete: 'off'
-    .columns.field
+    .small-4.columns.field
       %label
         = f.check_box :admin
         = f.label :admin
+    .small-4.columns.field
+      %label
+        = f.check_box :pro
+        = f.label :pro
     .columns
       %button.tiny(type="submit") Update
 

@@ -30,7 +30,7 @@ class TopicsController < ApplicationController
   end
 
   def follow
-    current_user.topics << topic_from_params
+    current_user.topics << topic_from_params if current_user.can_follow_topic?
     redirect_to topics_path
   end
 
