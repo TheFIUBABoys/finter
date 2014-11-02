@@ -5,7 +5,7 @@
       %i.fa.fa-star
   - if notification.promoted && notification.url.present?
     = link_to notification.url_label || 'Lets go!', notification.url, class: 'promoted-link'
-  %br
+    %br
   %small
     %i #{time_ago_in_words notification.original_date} ago
   %p= notification.body
