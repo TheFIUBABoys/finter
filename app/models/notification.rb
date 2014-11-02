@@ -2,6 +2,13 @@ class Notification < ActiveRecord::Base
   has_many :topic_notifications
   has_many :topics, through: :topic_notifications
 
+  validates_presence_of :twitter_handle
+  validates_presence_of :body
+  validates_presence_of :original_date
+
+  scope :promoted,     -> { where(promoted: true) }
+  scope :not_promoted, -> { where(promoted: false) }
+
   def self.create_from_tweet(tweet, promoted = false)
     Notification.create(
       twitter_handle: tweet.user.name,

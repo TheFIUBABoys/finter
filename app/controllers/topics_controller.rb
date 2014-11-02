@@ -35,7 +35,7 @@ class TopicsController < ApplicationController
   end
 
   def unfollow
-    current_user.topics.delete(topic_from_params)
+    current_user.topics.destroy(topic_from_params)
     redirect_to topics_path
   end
 

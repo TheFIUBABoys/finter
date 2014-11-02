@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102184806) do
+ActiveRecord::Schema.define(version: 20141102200958) do
 
   create_table "notifications", force: true do |t|
     t.string   "body"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20141102184806) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "original_date"
+    t.string   "url_label"
   end
 
   create_table "topic_notifications", force: true do |t|

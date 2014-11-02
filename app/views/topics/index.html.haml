@@ -1,4 +1,7 @@
 .row
+  - if is_admin?
+    .columns
+      = link_to 'Create topic', new_topic_path
   .columns
     %header
       %h4 Topics you follow

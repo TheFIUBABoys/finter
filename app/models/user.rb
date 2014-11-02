@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :user_topics
+  has_many :user_topics, dependent: :destroy
   has_many :topics, through: :user_topics
 
   validates_presence_of :username
