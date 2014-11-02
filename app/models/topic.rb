@@ -6,4 +6,8 @@ class Topic < ActiveRecord::Base
   has_many :users, through: :user_topics
 
   validates_uniqueness_of :name
+
+  def keywords
+    twitter_keywords.split(' ')
+  end
 end

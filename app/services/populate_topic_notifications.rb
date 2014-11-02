@@ -6,14 +6,12 @@ class PopulateTopicNotifications
   end
 
   def call
-    return Response.new(topic.notifications) if outdated_notifications(topic.notifications)
+    return Response.new(topic.notifications) unless outdated_notifications(topic.notifications)
 
-    by_keyword = topic.twitter_keywords.split(' ').map do |keyword|
-      twitter_client.search(keyword, result_type: 'popular').take(3)
-    end
-    notifications = by_keyword.flatten.uniq { |t| t.id }.map do |tweet|
-      Notification.create(twitter_handle: tweet.user.name, body: tweet.full_text.encode('UTF-8', 'ISO-8859-1'), url: tweet.url.to_s, promoted: false)
-    end
+    notifications = tweets_by_keyword.map { |tweet| Notification.create_from_tweet(tweet) }
+    notifications = notifications.sort { |a, b| ScoreNotification.new(a, topic.keywords).call <=> ScoreNotification.new(b, topic.keywords).call }
+    notifications = notifications.take(20)
+
     topic.notifications.destroy_all
     topic.notifications = notifications
     topic.save
@@ -24,7 +22,15 @@ class PopulateTopicNotifications
   private
 
   def outdated_notifications(notifications)
-    notifications.count > 0 && notifications.first.created_at > 1.hour.ago
+    notifications.count == 0 || notifications.first.created_at > 15.minutes.ago
+  end
+
+  def tweets_by_keyword
+    topic.keywords.map { |keyword| get_tweets_for(keyword) }.flatten.uniq { |tweet| tweet.id }
+  end
+
+  def get_tweets_for(keyword)
+    twitter_client.search(keyword, result_type: 'popular').take(10)
   end
 
   def twitter_client
