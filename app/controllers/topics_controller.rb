@@ -42,7 +42,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_from_params
-    Topic.find(topic_params.fetch(:id))
+    Topic.find(params.fetch(:id) || topic_params.fetch(:id))
   end
 
   def topic_params
