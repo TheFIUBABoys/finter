@@ -8,7 +8,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic         = Topic.find(params.fetch(:id))
-    @notifications = @topic.notifications
+    @notifications = @topic.notifications.order(original_date: :desc)
     @tweets        = topic_service.call
   end
 

@@ -4,5 +4,5 @@
     - if notification.promoted
       %i.fa.fa-star Promoted
   %small
-    %i= l notification.created_at, format: :short
+    %i #{time_ago_in_words notification.original_date} ago
   %p= notification.body

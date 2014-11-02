@@ -6,7 +6,7 @@ class PopulateTopicNotifications
   end
 
   def call
-    # return Response.new(topic.notifications) unless outdated_notifications(topic.notifications)
+    return Response.new(topic.notifications) unless outdated_notifications(topic.notifications)
 
     notifications = tweets_by_keyword.map { |tweet| Notification.create_from_tweet(tweet) }
     notifications = notifications.sort { |a, b| ScoreNotification.new(a, topic.keywords).call <=> ScoreNotification.new(b, topic.keywords).call }
@@ -34,7 +34,7 @@ class PopulateTopicNotifications
   end
 
   def get_tweets_for(keyword)
-    twitter_client.search(keyword, result_type: 'popular').take(10)
+    twitter_client.search(keyword, result_type: 'popular', count: 10)
   end
 
   def twitter_client

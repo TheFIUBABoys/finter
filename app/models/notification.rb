@@ -5,8 +5,9 @@ class Notification < ActiveRecord::Base
   def self.create_from_tweet(tweet, promoted = false)
     Notification.create(
       twitter_handle: tweet.user.name,
-      body: tweet.full_text.encode('UTF-8', 'ISO-8859-1'),
+      body: tweet.full_text,
       url: tweet.url.to_s,
+      original_date: tweet.created_at,
       promoted: promoted
     )
   end
