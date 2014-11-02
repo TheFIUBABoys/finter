@@ -6,9 +6,6 @@
       - else
         %i.fa.fa-rss
       = topic.name.capitalize
-    - if is_admin?
-      = link_to edit_topic_path(id: topic.id) do
-        %i.fa.fa-edit.right
     - if user_follows
       = link_to unfollow_topic_path(id: topic.id) do
         %i.fa.fa-close.right

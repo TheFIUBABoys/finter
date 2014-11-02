@@ -1,6 +1,7 @@
 - if is_admin?
-  %a(href="#" data-reveal-id="new-notification-modal")
-    Create notification
+  = link_to 'Edit topic', edit_topic_path(@topic)
+  |
+  %a(href="#" data-reveal-id="new-notification-modal") Create notification
 %h4
   = @topic.name.capitalize
 %blockquote= @topic.description

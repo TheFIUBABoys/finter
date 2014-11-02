@@ -9,8 +9,8 @@
 
   %body
     .row
-      .small-1.columns= render 'shared/sidebar'
-      .small-11.columns= yield
+      .small-2.medium-1.columns= render 'shared/sidebar'
+      .small-10.medium-11.columns= yield
 
     = javascript_include_tag 'application'
     = yield :local_js

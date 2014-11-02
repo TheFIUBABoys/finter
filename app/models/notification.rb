@@ -11,7 +11,7 @@ class Notification < ActiveRecord::Base
 
   def self.new_from_tweet(tweet, promoted = false)
     Notification.new(
-      twitter_handle: tweet.user.name,
+      twitter_handle: tweet.user.screen_name,
       body: tweet.full_text,
       url: tweet.url.to_s,
       original_date: tweet.created_at,
