@@ -11,6 +11,10 @@
         = f.text_field :description
     .columns.field
       %label
+        = f.label :twitter_keywords
+        = f.text_area :twitter_keywords
+    .columns.field
+      %label
         = f.check_box :promoted
         = f.label :promoted
     .columns
