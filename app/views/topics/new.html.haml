@@ -1,11 +1,11 @@
 = form_for(:topics, as: :topics, url: topics_path) do |f|
   %h4 Create New #{:topics.to_s.humanize}
   .row
-    .columns.field
+    .small-6.columns.field
       %label
         = f.label :name
         = f.text_field :name, autofocus: true
-    .columns.field
+    .small-6.columns.field
       %label
         = f.label :description
         = f.text_field :description
@@ -13,6 +13,10 @@
       %label
         = f.label :twitter_keywords
         = f.text_area :twitter_keywords
+    .small-6.columns.end.field
+      %label
+        = f.label :icon_name
+        = f.text_field :icon_name
     .columns.field
       %label
         = f.check_box :promoted

@@ -47,7 +47,7 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.fetch(:topics).
-      permit(:id, :name, :description, :twitter_keywords, :promoted)
+      permit(:id, :name, :description, :twitter_keywords, :icon_name, :promoted)
   end
 
   def topic_service
