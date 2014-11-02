@@ -12,8 +12,8 @@ class PopulateTopicNotifications
     notifications = notifications.sort { |a, b| ScoreNotification.new(a, topic.keywords).call <=> ScoreNotification.new(b, topic.keywords).call }
     notifications = notifications.take(20).each { |notification| notification.save }
 
+    clear_old_promoted
     topic.notifications.where(promoted: false).destroy_all
-    topic.notifications.where(promoted: true, created_at: 1.month.ago..1.day.ago).destroy_all
     topic.notifications << notifications
     topic.save
 
@@ -24,6 +24,10 @@ class PopulateTopicNotifications
 
   def outdated_notifications(notifications)
     notifications.count == 0 || notifications.first.created_at < 15.minutes.ago
+  end
+
+  def clear_old_promoted
+    topic.notifications.where(promoted: true, created_at: 1.month.ago..1.day.ago).destroy_all
   end
 
   def tweets_by_keyword

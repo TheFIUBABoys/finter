@@ -5,15 +5,18 @@
   .columns
     %header
       %h4 Topics you follow
-    .container
+    .topic-container
       - @user_topics.each do |topic|
         = render 'topic', topic: topic, user_follows: true
 
   .columns
     %header
       %h4 Suggested topics
-    .container
-      - @suggested_topics.promoted.each do |topic|
+    .topic-container
+      - @suggested_topics.each do |topic|
         = render 'topic', topic: topic, user_follows: false
-      - @suggested_topics.not_promoted.each do |topic|
-        = render 'topic', topic: topic, user_follows: false
+
+= content_for :local_js do
+  :javascript
+    var $container = $('.topic-container')
+    $container.masonry({columnWidth: 275, itemSelector: '.topic'});
