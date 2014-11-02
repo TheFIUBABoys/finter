@@ -1,19 +1,19 @@
 %p
   = image_tag 'finter-logo.png'
 %ul.side-nav
-  %li
-    = link_to home_index_path do
+  %li.text-center
+    = active_link_to home_index_path do
       %i.fa.fa-home
-      Home
-  %li
-    = link_to topics_path do
+  %li.text-center
+    = active_link_to topics_path do
       %i.fa.fa-comments
-      Topics
-  %li
-    = link_to edit_user_registration_path do
+  - if is_admin?
+    %li.text-center
+      = active_link_to new_topic_path do
+        %i.fa.fa-plus
+  %li.text-center
+    = active_link_to edit_user_registration_path do
       %i.fa.fa-user
-      Account
-  %li
-    = link_to destroy_user_session_path, :method => :delete do
+  %li.text-center
+    = active_link_to destroy_user_session_path, :method => :delete do
       %i.fa.fa-sign-out
-      Sign Out

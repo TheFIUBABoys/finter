@@ -9,19 +9,32 @@ class TopicsController < ApplicationController
     @notifications = @topic.notifications
   end
 
+  def new
+  end
+
+  def create
+    Topic.create(topic_params)
+    redirect_to topics_path
+  end
+
   def follow
-    current_user.topics << topic_param
+    current_user.topics << topic_from_params
     redirect_to topics_path
   end
 
   def unfollow
-    current_user.topics.delete(topic_param)
+    current_user.topics.delete(topic_from_params)
     redirect_to topics_path
   end
 
   private
 
-  def topic_param
-    Topic.find(params.fetch(:id))
+  def topic_from_params
+    Topic.find(topic_params.fetch(:id))
+  end
+
+  def topic_params
+    params.fetch(:topics).
+      permit(:id, :name, :description, :promoted)
   end
 end
