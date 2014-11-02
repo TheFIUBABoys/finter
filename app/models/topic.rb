@@ -7,6 +7,9 @@ class Topic < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
+  scope :promoted,     -> { where(promoted: true) }
+  scope :not_promoted, -> { where(promoted: false) }
+
   def keywords
     twitter_keywords.split(' ')
   end

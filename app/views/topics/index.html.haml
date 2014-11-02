@@ -13,5 +13,7 @@
     %header
       %h4 Suggested topics
     .container
-      - @suggested_topics.each do |topic|
+      - @suggested_topics.promoted.each do |topic|
+        = render 'topic', topic: topic, user_follows: false
+      - @suggested_topics.not_promoted.each do |topic|
         = render 'topic', topic: topic, user_follows: false

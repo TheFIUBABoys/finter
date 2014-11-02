@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
 
   def index
     @user_topics      = current_user.topics
-    @suggested_topics = Topic.all - @user_topics
+    @suggested_topics = Topic.where.not(id: UserTopic.where(user: current_user).pluck(:topic_id))
   end
 
   def show
