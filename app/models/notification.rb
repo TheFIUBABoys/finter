@@ -1,5 +1,5 @@
 class Notification < ActiveRecord::Base
-  has_many :topic_notifications
+  has_many :topic_notifications, dependent: :destroy
   has_many :topics, through: :topic_notifications
 
   validates_presence_of :twitter_handle
@@ -9,8 +9,8 @@ class Notification < ActiveRecord::Base
   scope :promoted,     -> { where(promoted: true) }
   scope :not_promoted, -> { where(promoted: false) }
 
-  def self.create_from_tweet(tweet, promoted = false)
-    Notification.create(
+  def self.new_from_tweet(tweet, promoted = false)
+    Notification.new(
       twitter_handle: tweet.user.name,
       body: tweet.full_text,
       url: tweet.url.to_s,

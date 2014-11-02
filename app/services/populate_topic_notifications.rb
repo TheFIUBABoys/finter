@@ -8,9 +8,9 @@ class PopulateTopicNotifications
   def call
     return Response.new(topic.notifications) unless outdated_notifications(topic.notifications)
 
-    notifications = tweets_by_keyword.map { |tweet| Notification.create_from_tweet(tweet) }
+    notifications = tweets_by_keyword.map { |tweet| Notification.new_from_tweet(tweet) }
     notifications = notifications.sort { |a, b| ScoreNotification.new(a, topic.keywords).call <=> ScoreNotification.new(b, topic.keywords).call }
-    notifications = notifications.take(20)
+    notifications = notifications.take(20).each { |notification| notification.save }
 
     topic.notifications.where(promoted: false).destroy_all
     topic.notifications.where(promoted: true, created_at: 1.month.ago..1.day.ago).destroy_all
