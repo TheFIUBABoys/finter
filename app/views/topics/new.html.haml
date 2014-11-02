@@ -1,18 +1,17 @@
-.row
-  = form_for(:topics, as: :topics, url: topics_path) do |f|
-    %h4 Create New #{:topics.to_s.humanize}
-    .row
-      .columns.field
-        %label
-          = f.label :name
-          = f.text_field :name, autofocus: true
-      .columns.field
-        %label
-          = f.label :description
-          = f.text_field :description
-      .columns.field
-        %label
-          = f.check_box :promoted
-          = f.label :promoted
-      .columns
-        %button.tiny(type="submit") Create
+= form_for(:topics, as: :topics, url: topics_path) do |f|
+  %h4 Create New #{:topics.to_s.humanize}
+  .row
+    .columns.field
+      %label
+        = f.label :name
+        = f.text_field :name, autofocus: true
+    .columns.field
+      %label
+        = f.label :description
+        = f.text_field :description
+    .columns.field
+      %label
+        = f.check_box :promoted
+        = f.label :promoted
+    .columns
+      %button.tiny(type="submit") Create

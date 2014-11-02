@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @user_topics      = current_user.topics
     @suggested_topics = Topic.all - @user_topics

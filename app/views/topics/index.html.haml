@@ -1,17 +1,14 @@
 .row
-  .small-1.columns= render 'shared/sidebar'
-  .small-11.columns
-    .row
-      .columns
-        %header
-          %h4 Topics you follow
-        .container
-          - @user_topics.each do |topic|
-            = render 'topic', topic: topic, user_follows: true
+  .columns
+    %header
+      %h4 Topics you follow
+    .container
+      - @user_topics.each do |topic|
+        = render 'topic', topic: topic, user_follows: true
 
-      .columns
-        %header
-          %h4 Suggested topics
-        .container
-          - @suggested_topics.each do |topic|
-            = render 'topic', topic: topic, user_follows: false
+  .columns
+    %header
+      %h4 Suggested topics
+    .container
+      - @suggested_topics.each do |topic|
+        = render 'topic', topic: topic, user_follows: false

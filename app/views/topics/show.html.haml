@@ -1,7 +1,4 @@
-.row
-  .small-1.columns= render 'shared/sidebar'
-  .small-11.columns
-    %h4= @topic.name.capitalize
-    %blockquote= @topic.description
-    - @notifications.each do |notification|
-      =render 'notification', notification: notification
+%h4= @topic.name.capitalize
+%blockquote= @topic.description
+- @notifications.each do |notification|
+  =render 'notification', notification: notification

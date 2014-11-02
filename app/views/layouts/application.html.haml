@@ -7,6 +7,8 @@
     = csrf_meta_tags
 
   %body
-    = yield
+    .row
+      .small-1.columns= render 'shared/sidebar'
+      .small-11.columns= yield
 
     = javascript_include_tag 'application'
