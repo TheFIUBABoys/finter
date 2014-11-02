@@ -1,7 +1,8 @@
-.panel
+.notification
   %h5
     = notification.twitter_handle
     - if notification.promoted
       %i.fa.fa-star Promoted
-    %small= l notification.created_at, format: :short
+  %small
+    %i= l notification.created_at, format: :short
   %p= notification.body

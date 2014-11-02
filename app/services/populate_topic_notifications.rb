@@ -6,7 +6,7 @@ class PopulateTopicNotifications
   end
 
   def call
-    return Response.new(topic.notifications) unless outdated_notifications(topic.notifications)
+    # return Response.new(topic.notifications) unless outdated_notifications(topic.notifications)
 
     notifications = tweets_by_keyword.map { |tweet| Notification.create_from_tweet(tweet) }
     notifications = notifications.sort { |a, b| ScoreNotification.new(a, topic.keywords).call <=> ScoreNotification.new(b, topic.keywords).call }
@@ -26,7 +26,11 @@ class PopulateTopicNotifications
   end
 
   def tweets_by_keyword
-    topic.keywords.map { |keyword| get_tweets_for(keyword) }.flatten.uniq { |tweet| tweet.id }
+    topic.keywords.
+      map { |keyword| get_tweets_for(keyword) }.
+      flatten.
+      uniq { |tweet| tweet.id }.
+      select { |tweet| tweet.full_text.encoding.to_s == 'UTF-8' }
   end
 
   def get_tweets_for(keyword)

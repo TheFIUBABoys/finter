@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101225031) do
+ActiveRecord::Schema.define(version: 20141102184806) do
 
   create_table "notifications", force: true do |t|
     t.string   "body"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20141101225031) do
     t.string   "twitter_handle"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "original_date"
   end
 
   create_table "topic_notifications", force: true do |t|
