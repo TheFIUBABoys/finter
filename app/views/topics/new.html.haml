@@ -13,7 +13,11 @@
       %label
         = f.label :twitter_keywords
         = f.text_area :twitter_keywords
-    .small-6.columns.end.field
+    .small-6.columns.field
+      %label
+        = f.label :notification_type
+        = f.text_field :notification_type
+    .small-6.columns.field
       %label
         = f.label :icon_name
         = f.text_field :icon_name

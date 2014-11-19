@@ -8,7 +8,7 @@ class PopulateTopicNotifications
   def call
     return Response.new(topic.notifications) unless outdated_notifications(topic.notifications)
 
-    notifications = tweets_by_keyword.map { |tweet| Notification.new_from_tweet(tweet) }
+    notifications = tweets_by_keyword(topic.notification_type).map { |tweet| Notification.new_from_tweet(tweet) }
     notifications = notifications.sort { |a, b| ScoreNotification.new(a, topic.keywords).call <=> ScoreNotification.new(b, topic.keywords).call }
     notifications = notifications.take(20).each { |notification| notification.save }
 
@@ -30,15 +30,15 @@ class PopulateTopicNotifications
     topic.notifications.where(promoted: true, created_at: 1.month.ago..1.day.ago).destroy_all
   end
 
-  def tweets_by_keyword
+  def tweets_by_keyword(type = nil)
     topic.keywords.
-      map { |keyword| get_tweets_for(keyword) }.
+      map { |keyword| get_tweets_for(keyword, type) }.
       flatten.
       uniq { |tweet| tweet.id }
   end
 
-  def get_tweets_for(keyword)
-    twitter_client.search(keyword, result_type: 'popular', count: 10).take(10)
+  def get_tweets_for(keyword, type = 'popular')
+    twitter_client.search(keyword, result_type: type, count: 10).take(10)
   end
 
   def twitter_client
