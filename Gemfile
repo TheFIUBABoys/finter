@@ -8,6 +8,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'rails_12factor', group: :production
 gem 'spring', group: :development
 gem 'sass-rails'
 gem 'coffee-rails'
