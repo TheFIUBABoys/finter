@@ -6,7 +6,7 @@ class PopulateTopicNotifications
   end
 
   def call
-    return Response.new(topic.notifications) unless outdated_notifications(topic.notifications)
+    return Response.new(topic.notifications) unless outdated_notifications(topic)
 
     notifications = tweets_by_keyword(topic.notification_type).map { |tweet| Notification.new_from_tweet(tweet) }
     notifications = notifications.sort { |a, b| ScoreNotification.new(a, topic.keywords).call <=> ScoreNotification.new(b, topic.keywords).call }
@@ -22,8 +22,9 @@ class PopulateTopicNotifications
 
   private
 
-  def outdated_notifications(notifications)
-    notifications.count == 0 || notifications.first.created_at < 15.minutes.ago
+  def outdated_notifications(topic)
+    notifications = topic.notifications
+    notifications.count == 0 || notifications.first.created_at < 15.minutes.ago || notifications.first.created_at < topic.updated_at
   end
 
   def clear_old_promoted
