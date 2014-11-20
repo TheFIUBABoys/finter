@@ -2,7 +2,7 @@
   %head
     %title Finter
     = stylesheet_link_tag 'application', media: 'all'
-    = google_webfonts_init({google: ['Roboto Slab', 'Roboto']})
+    = google_webfonts_init({google: ['Roboto Slab', 'Roboto', 'Cabin Condensed']})
     = csrf_meta_tags
 
   %body.container-fluid
@@ -10,5 +10,7 @@
       .col-md-2.col-xs-3= render 'shared/sidebar'
       .col-md-10.col-xs-9= yield
 
+    - if is_admin?
+      = render 'shared/admin_ribbon'
     = javascript_include_tag 'application'
     = yield :local_js

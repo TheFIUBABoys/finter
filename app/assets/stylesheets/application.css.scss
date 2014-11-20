@@ -1,0 +1,16 @@
+//= require font-awesome
+//= require_self
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "variables";
+@import "ribbon";
+@import "header";
+@import "sidebar";
+@import "auth";
+@import "topic";
+@import "notification";
+
+body {
+  margin-top: 20px;
+  background-color: #f8f8f8;
+}

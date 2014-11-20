@@ -1,20 +1,23 @@
+= render 'shared/header', title: 'Topics'
 .row
-  - if is_admin?
-    .columns
-      = link_to 'Create topic', new_topic_path
-  .columns
+  .col-xs-12
     %header
       %h4 Topics you follow
     .topic-container
       - @user_topics.each do |topic|
         = render 'topic', topic: topic, user_follows: true
 
-  .columns
+  .col-xs-12
     %header
       %h4 Suggested topics
     .topic-container
       - @suggested_topics.each do |topic|
         = render 'topic', topic: topic, user_follows: false
+
+= content_for :admin_sidebar do
+  .text-center
+    .btn-group-vertical.btn-group-sm
+      = link_to 'Create topic', new_topic_path, class: 'btn btn-default'
 
 = content_for :local_js do
   :javascript

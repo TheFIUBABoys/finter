@@ -1,9 +1,4 @@
-- if is_admin?
-  = link_to 'Edit topic', edit_topic_path(@topic)
-  |
-  %a(href="#" data-toggle="modal" data-target="#new-notification-modal") Create notification
-%h4
-  = @topic.name.capitalize
+= render 'shared/header', title: @topic.name.capitalize
 %blockquote= @topic.description
 #notifications
   - @notifications.promoted.each do |notification|
@@ -11,33 +6,15 @@
   - @notifications.not_promoted.each do |notification|
     =render 'notification', notification: notification
 
-#new-notification-modal.modal.fade(tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="newNotificationModal")
-  .modal-dialog
-    .modal-content
-      .modal-header
-        %h4 Create Notification
-      .modal-body.container-fluid
-        = form_for(:notification, url: topic_notifications_path(@topic)) do |f|
-          .form-group
-            = f.label :twitter_handle
-            = f.text_field :twitter_handle, autofocus: true, class: 'form-control', required: true
-          .form-group
-            = f.label :body
-            = f.text_area :body, class: 'form-control', required: true
-          .form-group
-            = f.label :url_label
-            = f.text_field :url_label, class: 'form-control', required: true
-          .form-group
-            = f.label :url
-            = f.text_field :url, class: 'form-control'
-          .checkbox
-            %label
-              = f.check_box :promoted
-              = f.label :promoted
-          %button.btn.btn-primary(type="submit") Create
+= render 'notification_modal'
 
+= content_for :admin_sidebar do
+  .text-center
+    .btn-group-vertical.btn-group-sm
+      = link_to 'Edit topic', edit_topic_path(@topic), class: 'btn btn-default'
+      %a.btn.btn-default(href="#" data-toggle="modal" data-target="#new-notification-modal") Create notification
 
 = content_for :local_js do
   :javascript
     var $container = $('#notifications')
-    $container.masonry({columnWidth: 275, itemSelector: '.notification'});
+    $container.masonry({columnWidth: 259, itemSelector: '.notification'});
