@@ -14,17 +14,10 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 
-## Optional
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
 ## Finter
 gem 'haml-rails'
-gem 'foundation-rails'
+gem 'bootstrap-sass', '~> 3.3.0'
+gem 'autoprefixer-rails'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'twitter'

@@ -31,7 +31,11 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
+    autoprefixer-rails (3.1.2.20141016)
+      execjs
     bcrypt (3.1.9)
+    bootstrap-sass (3.3.0.1)
+      sass (~> 3.2)
     buftok (0.2.0)
     builder (3.2.2)
     coderay (1.1.0)
@@ -56,9 +60,6 @@ GEM
       multipart-post (>= 1.2, < 3)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
-    foundation-rails (5.3.1.0)
-      railties (>= 3.1.0)
-      sass (>= 3.2.0)
     google-webfonts-rails (0.0.4)
       activesupport (> 3.2.0, < 5.0)
     haml (4.0.5)
@@ -174,10 +175,11 @@ PLATFORMS
 
 DEPENDENCIES
   active_link_to
+  autoprefixer-rails
+  bootstrap-sass (~> 3.3.0)
   coffee-rails
   devise
   font-awesome-rails
-  foundation-rails
   google-webfonts-rails
   haml-rails
   jbuilder (~> 2.0)

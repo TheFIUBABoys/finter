@@ -1,16 +1,14 @@
 %html
   %head
     %title Finter
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = javascript_include_tag 'vendor/modernizr'
+    = stylesheet_link_tag 'application', media: 'all'
     = google_webfonts_init({google: ['Roboto Slab', 'Roboto']})
     = csrf_meta_tags
 
-  %body
+  %body.container-fluid
     .row
-      .small-2.medium-1.columns= render 'shared/sidebar'
-      .small-10.medium-11.columns= yield
+      .col-md-2.col-xs-3= render 'shared/sidebar'
+      .col-md-10.col-xs-9= yield
 
     = javascript_include_tag 'application'
     = yield :local_js

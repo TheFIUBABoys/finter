@@ -1,28 +1,33 @@
 %p
   = active_link_to home_index_path do
-    = image_tag 'finter-logo.png'
-%ul.side-nav
-  %li.text-center
+    = image_tag 'finter-logo.png', width: '100%'
+%ul.nav.nav-pills.nav-stacked
+  %li(role="presentation")
     = active_link_to topics_path do
-      %i.fa.fa-comments-o
+      Topics
+      %i.fa.fa-comments-o.pull-right
 
   - if logged?
     - user_topics.each do |topic|
-      %li.text-center
+      %li(role="presentation")
         = active_link_to topic_path(topic) do
+          = topic.name.capitalize
           - if topic.icon_name.blank?
-            %i.fa.fa-rss= topic.name.first.upcase
+            %i.fa.fa-rss.pull-right= topic.name.first.upcase
           - else
-            %i.fa(class="#{topic.icon_name}")
+            %i.fa.pull-right(class="#{topic.icon_name}")
 
-  %li.text-center
+  %li(role="presentation")
     = active_link_to edit_user_registration_path do
-      %i.fa.fa-gears
+      Settings
+      %i.fa.fa-gears.pull-right
   - if logged?
-    %li.text-center
+    %li(role="presentation")
       = active_link_to destroy_user_session_path, :method => :delete do
-        %i.fa.fa-sign-out
+        Sign out
+        %i.fa.fa-sign-out.pull-right
   - else
-    %li.text-center
+    %li(role="presentation")
       = active_link_to new_user_session_path do
-        %i.fa.fa-sign-in
+        Sign in
+        %i.fa.fa-sign-in.pull-right

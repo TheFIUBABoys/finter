@@ -1,29 +1,22 @@
 = form_for(@topic, as: :topics, url: topic_path(@topic), html: { method: :put }) do |f|
   %h4 Edit #{@topic.name}
-  .row
-    .small-6.columns.end.field
-      %label
-        = f.label :name
-        = f.text_field :name, autofocus: true
-    .small-6.columns.field
-      %label
-        = f.label :description
-        = f.text_field :description
-    .columns.field
-      %label
-        = f.label :twitter_keywords
-        = f.text_area :twitter_keywords
-    .small-6.columns.field
-      %label
-        = f.label :notification_type
-        = f.text_field :notification_type
-    .small-6.columns.field
-      %label
-        = f.label :icon_name
-        = f.text_field :icon_name
-    .columns.end.field
-      %label
-        = f.check_box :promoted
-        = f.label :promoted
-    .columns
-      %button.tiny(type="submit") Save
+  .form-group
+    = f.label :name
+    = f.text_field :name, autofocus: true, placeholder: "the topic's name", class: 'form-control', required: true
+  .form-group
+    = f.label :description
+    = f.text_field :description, placeholder: 'a brief description of the topic', class: 'form-control', required: true
+  .columns.field
+    = f.label :twitter_keywords
+    = f.text_area :twitter_keywords, placeholder: 'twitter keywords separated by spaces', class: 'form-control', required: true, rows: 2
+  .form-group
+    = f.label :notification_type
+    = f.text_field :notification_type, placeholder: 'mixed, popular or recent', class: 'form-control'
+  .form-group
+    = f.label :icon_name
+    = f.text_field :icon_name, placeholder: 'eg: fa-soccer-ball', class: 'form-control'
+  .checkbox
+    %label
+      = f.check_box :promoted
+      = f.label :promoted
+  %button.btn.btn-primary(type="submit") Save

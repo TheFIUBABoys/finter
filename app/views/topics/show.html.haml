@@ -1,7 +1,7 @@
 - if is_admin?
   = link_to 'Edit topic', edit_topic_path(@topic)
   |
-  %a(href="#" data-reveal-id="new-notification-modal") Create notification
+  %a(href="#" data-toggle="modal" data-target="#new-notification-modal") Create notification
 %h4
   = @topic.name.capitalize
 %blockquote= @topic.description
@@ -11,32 +11,30 @@
   - @notifications.not_promoted.each do |notification|
     =render 'notification', notification: notification
 
-#new-notification-modal.reveal-modal(data-reveal)
-  = form_for(:notification, url: topic_notifications_path(@topic)) do |f|
-    %h4 Create Notification
-    .row
-      .small-6.end.columns.field
-        %label
-          = f.label :twitter_handle
-          = f.text_field :twitter_handle, autofocus: true
-      .columns.field
-        %label
-          = f.label :body
-          = f.text_area :body
-      .small-6.columns.field
-        %label
-          = f.label :url_label
-          = f.text_field :url_label
-      .small-6.columns.field
-        %label
-          = f.label :url
-          = f.text_field :url
-      .columns.field
-        %label
-          = f.check_box :promoted
-          = f.label :promoted
-      .columns
-        %button.tiny(type="submit") Create
+#new-notification-modal.modal.fade(tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="newNotificationModal")
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h4 Create Notification
+      .modal-body.container-fluid
+        = form_for(:notification, url: topic_notifications_path(@topic)) do |f|
+          .form-group
+            = f.label :twitter_handle
+            = f.text_field :twitter_handle, autofocus: true, class: 'form-control', required: true
+          .form-group
+            = f.label :body
+            = f.text_area :body, class: 'form-control', required: true
+          .form-group
+            = f.label :url_label
+            = f.text_field :url_label, class: 'form-control', required: true
+          .form-group
+            = f.label :url
+            = f.text_field :url, class: 'form-control'
+          .checkbox
+            %label
+              = f.check_box :promoted
+              = f.label :promoted
+          %button.btn.btn-primary(type="submit") Create
 
 
 = content_for :local_js do

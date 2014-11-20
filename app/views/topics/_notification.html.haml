@@ -1,11 +1,12 @@
-.notification
-  %h5
-    = notification.twitter_handle
-    - if notification.promoted
-      %i.fa.fa-star
-  - if notification.promoted && notification.url.present?
-    = link_to notification.url_label || 'Lets go!', notification.url, class: 'promoted-link'
-    %br
-  %small
+.notification.panel.panel-default
+  .panel-heading
+    %h5
+      = notification.twitter_handle
+      - if notification.promoted
+        %i.fa.fa-star
+    - if notification.promoted && notification.url.present?
+      = link_to notification.url_label || 'Lets go!', notification.url, class: 'promoted-link'
+  .panel-body
+    %p= notification.body
+  .panel-footer
     %i #{time_ago_in_words notification.original_date} ago
-  %p= notification.body
