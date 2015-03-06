@@ -2,10 +2,24 @@
 
 ## Dependencies
 
+### Ruby
 - RubyGems: https://rubygems.org/pages/download
 - Rake: https://rubygems.org/gems/rake
 - Bundler: http://bundler.io/
 - RubyOnRails: http://rubyonrails.org/download/
+
+### Postgre
+-  sudo apt-get install postgresql postgresql-contrib
+
+Setup user-pass-db:
+
+- sudo -u postgres createuser -D -A -P finter
+- sudo -u postgres psql . Then in the opened psql console:
+   - alter user finter with password 'finter'; 
+- sudo -u postgres createdb -O finter finter
+
+### JS Runtime
+- sudo apt-get install nodejs
 
 ## Bundle application
 

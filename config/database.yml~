@@ -1,0 +1,9 @@
+development:	
+  adapter: postgresql
+  database: finter
+  username: finter
+  password: finter
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
