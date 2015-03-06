@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   get 'home/index'
+  get 'home/sendmail'
 
   resources :topics, only: [:index, :show, :new, :create, :edit, :update] do
     member do
