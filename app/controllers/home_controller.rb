@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   	
 	  def sendmail
       #Send email and  go back to home
-      ActionMailer::Base.mail(:from => "lucas.simonelli@example.com", :to => "ohv40933@pisls.com", :subject => "Federer updates!", :body => "test")
+      ActionMailer::Base.mail(:from => "lucas.simonelli@example.com", :to => "gonchub@gmail.com", :subject => "Federer updates!", :body => "#Federer just won the US Open again! More in [finter permalink]")
           .deliver
 
       redirect_to(action: index)
